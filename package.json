@@ -1,0 +1,14 @@
+{
+  "name": "tweetSkill",
+  "version": "1.0.0",
+  "description": "Alexa Tweet Skill with serverless",
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless-local-alexa-server": "^0.2.0"
+  },
+  "dependencies": {
+    "alexa-sdk": "^1.0.11",
+    "twitter": "^1.7.1"
+  }
+}
