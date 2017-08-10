@@ -1,6 +1,6 @@
 service: tweetSkill
 
-frameworkVersion: ">=1.0.0 <2.0.0"
+#frameworkVersion: ">=1.0.0 <2.0.0"
 #frameworkVersion: "=1.0.3"
 provider:
   name: aws
@@ -9,12 +9,24 @@ provider:
   stage: develop
   region: eu-west-1
 
-environment:
-  TW_CONSUMER_KEY: ""
-  TW_CONSUMET_SECRET: ""
-  TW_ACESS_TOKEN_KEY: ""
-  TW_ACCESS_TOKEN_SECRET: ""
-  ALEXA_APP_ID: ""
+  environment:
+    TW_CONSUMER_KEY: "${self:custom.secrets.TW_CONSUMER_KEY}"
+    TW_CONSUMER_SECRET: "${self:custom.secrets.TW_CONSUMER_SECRET}"
+    TW_ACESS_TOKEN_KEY: "${self:custom.secrets.TW_ACESS_TOKEN_KEY}"
+    TW_ACCESS_TOKEN_SECRET: "${self:custom.secrets.TW_ACCESS_TOKEN_SECRET}"
+    ALEXA_APP_ID: "${self:custom.secrets.ALEXA_APP_ID}"
+    SERVICE: "${self:service}"
+    STAGE: "${self:provider.stage}"
+    SLS_DEBUG: "*"
+
+  package:
+    exclude:
+      - secrets.yml
+
+
+custom:
+    stage: ${opt:stage, self:provider.stage}
+    secrets: ${file(secrets.yml):${self:custom.stage}}
 
 
 functions:

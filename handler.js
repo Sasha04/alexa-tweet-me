@@ -1,14 +1,13 @@
 'use strict';
 
-
 var Alexa = require('alexa-sdk');
 var Twitter = require('twitter');
 
 var client = new Twitter({
-    consumer_key: '',
-    consumer_secret: '',
-    access_token_key: '',
-    access_token_secret: ''
+    consumer_key: process.env.TW_CONSUMER_KEY,
+    consumer_secret: process.env.TW_CONSUMER_SECRET,
+    access_token_key: process.env.TW_ACESS_TOKEN_KEY,
+    access_token_secret: process.env.TW_ACCESS_TOKEN_SECRET
 });
 
 var languageStrings = {
@@ -91,9 +90,13 @@ var giveMeASentence = function(slots){
 
 
 module.exports.sendTweet  = function(event, context, callback) {
-        var alexa = Alexa.handler(event, context, callback);
 
-        alexa.appId = '';
+//    AWS.config.region = 'eu-west-1';
+//    var lambda = new AWS.Lambda();
+
+
+    var alexa = Alexa.handler(event, context, callback);
+        alexa.appId = process.env.ALEXA_APP_ID;
 
         alexa.resources = languageStrings;
         alexa.registerHandlers(handlers);
