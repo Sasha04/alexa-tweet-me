@@ -6,6 +6,6 @@ layout: Doc
 Marco Vigan?
 -->
 # AWS Serverless Tweet Me Skill
-My first Alexa Skill implementation with [serverless](http://serverless.com/) frameword
+My first Alexa Skill implementation with [serverless](http://serverless.com/) framework
 ## Authors
 * **Marco Vigano'** - [@Sasha0423](https://twitter.com/Sasha0423)
